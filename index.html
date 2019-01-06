@@ -1,15 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<!DOCTYPE html>
+<html>
 <head>
-<title>Cross-Browser QRCode generator for Javascript</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="qrcode.js"></script>
+<title>QRCode generator for WhatsApp links</title>
+<script type="text/javascript" src="WhtzAppQRgen/jquery.min.js"></script>
+<script type="text/javascript" src="WhtzAppQRgen/qrcode.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+    font-family: 'Open Sans', sans-serif;
+    }
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+</style>
 </head>
 <body>
-<input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
+
+
+<div class="flex-container">
+For WhatsApp you will need to include the country code (62).
+<hr>
+<input id="wAnumber" type="number" value="62" style="width:80%"/><br />
+<input id="wAmessage" type="text" value="Please come see your child in the IES Kids area" style="width:80%"/>
+<br />
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+</div>
+
+
 
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -17,21 +46,22 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 	height : 100
 });
 
-function makeCode () {		
-	var elText = document.getElementById("text");
-	
-	if (!elText.value) {
-		alert("Input a text");
-		elText.focus();
-		return;
-	}
-	
-	qrcode.makeCode(elText.value);
+function makeCode () { 
+	var wnumber = document.getElementById("wAnumber");
+	var wmessage = document.getElementById("wAmessage"); 
+	var enMessage = ("this should work for us if it doesn't I don't ") ;
+	var wurl = "https://wa.me/" + (wAnumber.value) + "?text=" + encodeURI(wAmessage.value);
+    
+    if (!wnumber.value) {
+        alert("Input a number");
+        wnumber.focus();
+        return;
+    }
+    qrcode.makeCode(wurl);
 }
-
 makeCode();
 
-$("#text").
+$("#wAnumber").
 	on("blur", function () {
 		makeCode();
 	}).
@@ -40,5 +70,17 @@ $("#text").
 			makeCode();
 		}
 	});
+	
+$("#wAmessage").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+
 </script>
 </body>
+</html>
