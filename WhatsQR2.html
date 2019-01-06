@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QRCode generator for WhatsApp links</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+    font-family: 'Open Sans', sans-serif;
+    }
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+</style>
+</head>
+<body>
+
+
+<div class="flex-container">
+For WhatsApp you will need to include the country code (62).
+<hr>
+<input id="wAnumber" type="number" value="62" style="width:80%"/><br />
+<input id="wAmessage" type="text" value="Please come see your child in the IES Kids area" style="width:80%"/>
+<br />
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+</div>
+
+
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 100,
+	height : 100
+});
+
+function makeCode () { 
+	var wnumber = document.getElementById("wAnumber");
+	var wmessage = document.getElementById("wAmessage"); 
+	var enMessage = ("this should work for us if it doesn't I don't ") ;
+	var wurl = "https://wa.me/" + (wAnumber.value) + "?text=" + encodeURI(wAmessage.value);
+    
+    if (!wnumber.value) {
+        alert("Input a number");
+        wnumber.focus();
+        return;
+    }
+    qrcode.makeCode(wurl);
+}
+makeCode();
+
+$("#wAnumber").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+	
+$("#wAmessage").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+
+</script>
+</body>
+</html>
