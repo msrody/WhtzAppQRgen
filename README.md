@@ -1,3 +1,12 @@
+# WhtzAppQRgen
+
+WhtzAppQRgen uses the QRCode.js library to produce WhatsApp Click to Chat link QR codes.
+
+It is set up with two input areas.  One for number and one for message.
+
+
+
+---
 # QRCode.js
 QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM.
 QRCode.js has no dependencies.
