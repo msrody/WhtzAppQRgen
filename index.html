@@ -47,12 +47,11 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 100,
 	height : 100
 });
+var wnumber = document.getElementById("wAnumber");
+var wmessage = document.getElementById("wAmessage"); 
+var wurl = "https://wa.me/" + (wAnumber.value) + "?text=" + encodeURI(wAmessage.value);
 
 function makeCode () { 
-	var wnumber = document.getElementById("wAnumber");
-	var wmessage = document.getElementById("wAmessage"); 
-	var enMessage = ("this should work for us if it doesn't I don't ") ;
-	var wurl = "https://wa.me/" + (wAnumber.value) + "?text=" + encodeURI(wAmessage.value);
     
     if (!wnumber.value) {
         alert("Input a number");
