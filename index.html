@@ -61,7 +61,7 @@ var href = document.getElementById("href").setAttribute("href",wurl.value);
 function makeCode () { 
     var wnumber = document.getElementById("wAnumber");
     var wmessage = document.getElementById("wAmessage"); 
-    var wurl = "https://wa.me/" + (wAnumber) + "?text=" + encodeURI(wAmessage);
+    var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
     var href = document.getElementById("href").setAttribute("href",wurl);
     if (!wnumber.value) {
         alert("Input a number");
