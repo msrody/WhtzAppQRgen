@@ -56,7 +56,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 	height : 200
 });
 
-var href = document.getElementById("href").setAttribute("href",("https://wa.me/" + document.getElementById("wAnumber").value + "?text=" + encodeURI("wAmessage").value));
+var href = document.getElementById("href").setAttribute("href",("https://wa.me/" + (document.getElementById("wAnumber")).value + "?text=" + encodeURI("wAmessage").value));
 
 function makeCode () { 
     var wnumber = document.getElementById("wAnumber");
