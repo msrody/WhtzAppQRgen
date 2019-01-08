@@ -55,8 +55,10 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 200,
 	height : 200
 });
-
-var href = document.getElementById("href").setAttribute("href",("https://wa.me/" + document.getElementById("wAnumber") + "?text=" + encodeURI("wAmessage")));
+var wnumber = document.getElementById("wAnumber");
+var wmessage = document.getElementById("wAmessage"); 
+var wurl = "https://wa.me/" + (wAnumber.value) + "?text=" + encodeURI(wAmessage.value);
+var href = document.getElementById("href").setAttribute("href",(wurl));
 
 function makeCode () { 
     var wnumber = document.getElementById("wAnumber");
