@@ -53,19 +53,22 @@ For WhatsApp you will need to include the country code (62).
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 200,
 	height : 200
-})
+});
+
 
 function makeCode () { 
     var wnumber = document.getElementById("wAnumber");
     var wmessage = document.getElementById("wAmessage"); 
     var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
+    var href = document.getElementById("href").setAttribute("href",wurl);
+
     if (!wnumber.value) {
         alert("Input a number");
         wnumber.focus();
         return;
     }
     qrcode.makeCode(wurl);
-}
+}https://wa.me/6287876565241?text=Please%20come%20see%20your%20child%20in%20the%20IES%20Kids%20area
 makeCode();
 
 $("#wAnumber").
