@@ -40,12 +40,11 @@ input[type="number"] {
 <div class="flex-container">
 For WhatsApp you will need to include the country code (62).
 <hr>
-<input id="wAnumber" type="number" value="62"/><br />
+<input id="wAnumber" type="number" value="62"/>
+	<br />
 <input id="wAmessage" type="text" value="Please come see your child in the IES Kids area"/>
-<br />
-<a id="href">
+	<br />
 <div id="qrcode" style="width:50%; height:auto; margin-top:5px;"></div>
-	</a>
 	</div>
 
 
@@ -62,6 +61,7 @@ function makeCode () {
     var wmessage = document.getElementById("wAmessage"); 
     var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
     var href = document.getElementById("href").setAttribute("href",wurl);
+
     if (!wnumber.value) {
         alert("Input a number");
         wnumber.focus();
