@@ -20,7 +20,7 @@ body {
   width: 80%;
 }
 input {
-    font-size: 40px;
+    font-size: 32px;
     width:80%;
 }
 /* Hide HTML5 Up and Down arrows. */
@@ -38,7 +38,9 @@ input[type="number"] {
 
 
 <div class="flex-container">
-For WhatsApp you will need to include the country code (62).
+<p style="text-align:center;">For WhatsApp you will need to include the country code (62).<br />
+There is no validation for phone numbers in this page.<br />
+Validation will be done through your WhatsApp account.</p>
 <hr>
 <input id="wAnumber" type="number" value="62"/><br />
 <input id="wAmessage" type="text" value="Please come see your child in the IES Kids area"/>
@@ -53,7 +55,8 @@ For WhatsApp you will need to include the country code (62).
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 200,
-	height : 200
+	height : 200,
+    useSVG : true 
 });
 
 
