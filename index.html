@@ -19,9 +19,15 @@ body {
   font-size: large;
   width: 80%;
 }
+textarea {
+    font-size: 20px;
+    width:80%;
+    align-items:center;
+}
 input {
     font-size: 32px;
     width:80%;
+    align-items:center;
 }
 /* Hide HTML5 Up and Down arrows. */
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
@@ -43,15 +49,13 @@ There is no validation for phone numbers in this page.<br />
 Validation will be done through your WhatsApp account.</p>
 <hr>
 <input id="wAnumber" type="number" value="62"/><br />
-<textarea id="wAmessage" rows="10" cols="30">
+
+<textarea id="wAmessage" rows="10">
 Please come see your child in the IES Kids area.
 </textarea>
-    
-<!--    
-<input id="wAmessage" type="text" value="Please come see your child in the IES Kids area"/> -->
 <br />
 <a id="href">
-<div id="qrcode" style="margin-top:5px; align-items: center"></div>
+<div id="qrcode" style="margin-top:5px; align-items:center"></div>
 	</a>
 	</div>
 
