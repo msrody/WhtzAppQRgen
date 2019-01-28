@@ -43,10 +43,15 @@ There is no validation for phone numbers in this page.<br />
 Validation will be done through your WhatsApp account.</p>
 <hr>
 <input id="wAnumber" type="number" value="62"/><br />
-<input id="wAmessage" type="text" value="Please come see your child in the IES Kids area"/>
+<textarea id="wAmessage" rows="10" cols="30">
+Please come see your child in the IES Kids area.
+</textarea>
+    
+<!--    
+<input id="wAmessage" type="text" value="Please come see your child in the IES Kids area"/> -->
 <br />
 <a id="href">
-<div id="qrcode" style="width:50%; height:auto; margin-top:5px;"></div>
+<div id="qrcode" style="margin-top:5px; align-items: center"></div>
 	</a>
 	</div>
 
@@ -56,7 +61,7 @@ Validation will be done through your WhatsApp account.</p>
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 200,
 	height : 200,
-/*    useSVG : true */
+    useSVG : true 
 });
 
 
