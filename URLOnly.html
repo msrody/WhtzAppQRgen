@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QRCode generator for WhatsApp links</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    }
+.flex-container {
+  display: flex;
+  flex: 1;
+  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: large;
+  width: 80%;
+}
+textarea {
+    font-size: 20px;
+    width:80%;
+    align-items:center;
+}
+input {
+    font-size: 32px;
+    width:80%;
+    align-items:center;
+}
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+</style>
+</head>
+<body>
+
+
+<div class="flex-container">
+<p style="text-align:center;">Past the url.</p>
+<hr>
+
+<textarea id="urlText" rows="10">
+Please come see your child in the IES Kids area.
+</textarea>
+<br />
+<a id="href">
+<div id="qrcode" style="margin-top:5px; align-items:center"></div>
+	</a>
+	</div>
+
+
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 200,
+	height : 200,
+    useSVG : true 
+});
+
+
+function makeCode () { 
+    var urlVal = document.getElementById("urlText"); 
+    var wurl = encodeURI(urlVal.value);
+    var href = document.getElementById("href").setAttribute("href",wurl);
+  
+    qrcode.makeCode(wurl);
+}
+makeCode();
+
+
+	
+$("#urlText").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+
+</script>
+</body>
+</html>
