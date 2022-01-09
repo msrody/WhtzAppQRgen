@@ -13,6 +13,14 @@
             font-size: 40px;
         }
 
+        .grid_container {
+            grid-template-columns: 1fr 5fr 1fr;
+        }
+
+        .grid_item {
+            grid-column-start: col-start 2;
+        }
+
         .flex-container {
             display: flex;
             flex: 1;
@@ -61,67 +69,69 @@
 <body>
 
 
-    <div class="flex-container">
-        <p style="text-align:center;">For WhatsApp you will need to include the country code (62).<br />
-            There is no validation for phone numbers in this page.<br />
-            Validation will be done through your WhatsApp account.</p>
-        <hr>
-        <input id="wAnumber" type="number" value="62" /><br />
+    <div class="grid_container">
+        <div class="grid_item">
+            <p style="text-align:center;">For WhatsApp you will need to include the country code (62).<br />
+                There is no validation for phone numbers in this page.<br />
+                Validation will be done through your WhatsApp account.</p>
+            <hr>
+            <input id="wAnumber" type="number" value="62" /><br />
 
-        <textarea id="wAmessage" rows="10">
+            <textarea id="wAmessage" rows="10">
 Input your WhatsApp message here.
 </textarea>
-        <br />
-        <a id="href">
-            <div id="qrcode" style="margin-top:5px; align-items:center"></div>
-        </a>
+            <br />
+            <a id="href">
+                <div id="qrcode" style="margin-top:5px; align-items:center"></div>
+            </a>
 
 
 
-        <div class="flex-content">
-            <script type="text/javascript">
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 200,
-                    height: 200,
-//                    useSVG: true
-                });
+            <div class="flex-content">
+                <script type="text/javascript">
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width: 200,
+                        height: 200,
+                        //                    useSVG: true
+                    });
 
 
-                function makeCode() {
-                    var wnumber = document.getElementById("wAnumber");
-                    var wmessage = document.getElementById("wAmessage");
-                    var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
-                    var href = document.getElementById("href").setAttribute("href", wurl);
-                    if (!wnumber.value) {
-                        alert("Input a number");
-                        wnumber.focus();
-                        return;
+                    function makeCode() {
+                        var wnumber = document.getElementById("wAnumber");
+                        var wmessage = document.getElementById("wAmessage");
+                        var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
+                        var href = document.getElementById("href").setAttribute("href", wurl);
+                        if (!wnumber.value) {
+                            alert("Input a number");
+                            wnumber.focus();
+                            return;
+                        }
+                        qrcode.makeCode(wurl);
                     }
-                    qrcode.makeCode(wurl);
-                }
-                makeCode();
+                    makeCode();
 
-                $("#wAnumber").
-                    on("blur", function () {
-                        makeCode();
-                    }).
-                    on("keydown", function (e) {
-                        if (e.keyCode == 13) {
+                    $("#wAnumber").
+                        on("blur", function () {
                             makeCode();
-                        }
-                    });
+                        }).
+                        on("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                makeCode();
+                            }
+                        });
 
-                $("#wAmessage").
-                    on("blur", function () {
-                        makeCode();
-                    }).
-                    on("keydown", function (e) {
-                        if (e.keyCode == 13) {
+                    $("#wAmessage").
+                        on("blur", function () {
                             makeCode();
-                        }
-                    });
+                        }).
+                        on("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                makeCode();
+                            }
+                        });
 
-            </script>
+                </script>
+            </div>
         </div>
     </div>
 </body>
