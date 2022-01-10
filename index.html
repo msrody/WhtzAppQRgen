@@ -90,52 +90,51 @@
 
 
 
-            <div class="flex-container">
-                <div class="flex-content">
-                    <script type="text/javascript">
-                        var qrcode = new QRCode(document.getElementById("qrcode"), {
-                            width: 200,
-                            height: 200,
-                            //                    useSVG: true
+            <div class="grid_item">
+                <script type="text/javascript">
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width: 200,
+                        height: 200,
+                        //                    useSVG: true
+                    });
+
+
+                    function makeCode() {
+                        var wnumber = document.getElementById("wAnumber");
+                        var wmessage = document.getElementById("wAmessage");
+                        var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
+                        var href = document.getElementById("href").setAttribute("href", wurl);
+                        if (!wnumber.value) {
+                            alert("Input a number");
+                            wnumber.focus();
+                            return;
+                        }
+                        qrcode.makeCode(wurl);
+                    }
+                    makeCode();
+
+                    $("#wAnumber").
+                        on("blur", function () {
+                            makeCode();
+                        }).
+                        on("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                makeCode();
+                            }
                         });
 
-
-                        function makeCode() {
-                            var wnumber = document.getElementById("wAnumber");
-                            var wmessage = document.getElementById("wAmessage");
-                            var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
-                            var href = document.getElementById("href").setAttribute("href", wurl);
-                            if (!wnumber.value) {
-                                alert("Input a number");
-                                wnumber.focus();
-                                return;
+                    $("#wAmessage").
+                        on("blur", function () {
+                            makeCode();
+                        }).
+                        on("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                makeCode();
                             }
-                            qrcode.makeCode(wurl);
-                        }
-                        makeCode();
+                        });
 
-                        $("#wAnumber").
-                            on("blur", function () {
-                                makeCode();
-                            }).
-                            on("keydown", function (e) {
-                                if (e.keyCode == 13) {
-                                    makeCode();
-                                }
-                            });
+                </script>
 
-                        $("#wAmessage").
-                            on("blur", function () {
-                                makeCode();
-                            }).
-                            on("keydown", function (e) {
-                                if (e.keyCode == 13) {
-                                    makeCode();
-                                }
-                            });
-
-                    </script>
-                </div>
             </div>
         </div>
     </div>
