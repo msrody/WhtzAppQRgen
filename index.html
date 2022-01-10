@@ -57,7 +57,7 @@
         input {
             font-size: 32px;
             width: 80%;
-            text-align: center;
+            text-align: left;
         }
 
         /* Hide HTML5 Up and Down arrows. */
@@ -86,53 +86,53 @@
 
             <textarea id="wAmessage" rows="10">Input your WhatsApp message here.</textarea>
             <br />
-            <a id="href">
-                <div id="qrcode" style="margin-top:5px; align-items:center"></div>
-            </a>
-            <script type="text/javascript">
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 200,
-                    height: 200,
-                    //                    useSVG: true
-                });
+            <div class="grid_item">
+                <a id="href">
+                    <div id="qrcode" style="margin-top:5px; align-items:center"></div>
+                </a>
+                <script type="text/javascript">
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width: 200,
+                        height: 200,
+                        //                    useSVG: true
+                    });
 
 
-                function makeCode() {
-                    var wnumber = document.getElementById("wAnumber");
-                    var wmessage = document.getElementById("wAmessage");
-                    var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
-                    var href = document.getElementById("href").setAttribute("href", wurl);
-                    if (!wnumber.value) {
-                        alert("Input a number");
-                        wnumber.focus();
-                        return;
+                    function makeCode() {
+                        var wnumber = document.getElementById("wAnumber");
+                        var wmessage = document.getElementById("wAmessage");
+                        var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
+                        var href = document.getElementById("href").setAttribute("href", wurl);
+                        if (!wnumber.value) {
+                            alert("Input a number");
+                            wnumber.focus();
+                            return;
+                        }
+                        qrcode.makeCode(wurl);
                     }
-                    qrcode.makeCode(wurl);
-                }
-                makeCode();
+                    makeCode();
 
-                $("#wAnumber").
-                    on("blur", function () {
-                        makeCode();
-                    }).
-                    on("keydown", function (e) {
-                        if (e.keyCode == 13) {
+                    $("#wAnumber").
+                        on("blur", function () {
                             makeCode();
-                        }
-                    });
+                        }).
+                        on("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                makeCode();
+                            }
+                        });
 
-                $("#wAmessage").
-                    on("blur", function () {
-                        makeCode();
-                    }).
-                    on("keydown", function (e) {
-                        if (e.keyCode == 13) {
+                    $("#wAmessage").
+                        on("blur", function () {
                             makeCode();
-                        }
-                    });
-
-            </script>
-
+                        }).
+                        on("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                makeCode();
+                            }
+                        });
+                </script>
+            </div>
         </div>
     </div>
     </div>
