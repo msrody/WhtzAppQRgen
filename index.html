@@ -80,6 +80,8 @@
                 There is no validation for phone numbers in this page.<br />
                 Validation will be done through your WhatsApp account.</p>
             <hr>
+        </div>
+        <div class="grid_item">
             <input id="wAnumber" type="number" value="62" /><br />
 
             <textarea id="wAmessage" rows="10">
@@ -89,56 +91,52 @@
             <a id="href">
                 <div id="qrcode" style="margin-top:5px; align-items:center"></div>
             </a>
+            <script type="text/javascript">
+                var qrcode = new QRCode(document.getElementById("qrcode"), {
+                    width: 200,
+                    height: 200,
+                    //                    useSVG: true
+                });
 
 
+                function makeCode() {
+                    var wnumber = document.getElementById("wAnumber");
+                    var wmessage = document.getElementById("wAmessage");
+                    var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
+                    var href = document.getElementById("href").setAttribute("href", wurl);
+                    if (!wnumber.value) {
+                        alert("Input a number");
+                        wnumber.focus();
+                        return;
+                    }
+                    qrcode.makeCode(wurl);
+                }
+                makeCode();
 
-            <div class="grid_item">
-                <script type="text/javascript">
-                    var qrcode = new QRCode(document.getElementById("qrcode"), {
-                        width: 200,
-                        height: 200,
-                        //                    useSVG: true
+                $("#wAnumber").
+                    on("blur", function () {
+                        makeCode();
+                    }).
+                    on("keydown", function (e) {
+                        if (e.keyCode == 13) {
+                            makeCode();
+                        }
                     });
 
-
-                    function makeCode() {
-                        var wnumber = document.getElementById("wAnumber");
-                        var wmessage = document.getElementById("wAmessage");
-                        var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
-                        var href = document.getElementById("href").setAttribute("href", wurl);
-                        if (!wnumber.value) {
-                            alert("Input a number");
-                            wnumber.focus();
-                            return;
+                $("#wAmessage").
+                    on("blur", function () {
+                        makeCode();
+                    }).
+                    on("keydown", function (e) {
+                        if (e.keyCode == 13) {
+                            makeCode();
                         }
-                        qrcode.makeCode(wurl);
-                    }
-                    makeCode();
+                    });
 
-                    $("#wAnumber").
-                        on("blur", function () {
-                            makeCode();
-                        }).
-                        on("keydown", function (e) {
-                            if (e.keyCode == 13) {
-                                makeCode();
-                            }
-                        });
+            </script>
 
-                    $("#wAmessage").
-                        on("blur", function () {
-                            makeCode();
-                        }).
-                        on("keydown", function (e) {
-                            if (e.keyCode == 13) {
-                                makeCode();
-                            }
-                        });
-
-                </script>
-
-            </div>
         </div>
+    </div>
     </div>
 </body>
 
