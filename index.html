@@ -6,11 +6,12 @@
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="qrcode.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap');
 
         body {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.8em;
+            font-family: 'Barlow Condensed', sans-serif;
         }
 
         .grid_container {
@@ -87,16 +88,16 @@
 
             <textarea id="wAmessage" rows="10">Input your WhatsApp message here.</textarea>
             <br />
-            <input id="submit" type="submit" value="Submit" />
+            <input id="submit" type="submit" value="Submit" style="margin-top:1em"   />
         </div>
         <div class="grid_item">
             <a id="href">
-                <div id="qrcode" class="grid_item" style="margin-top:2em; align-items:center"></div>
+                <div id="qrcode" class="grid_item" style="margin-top:1em; align-items:center"></div>
             </a>
             <script type="text/javascript">
                 var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 100,
-                    height: 100,
+                    width: 150,
+                    height: 150,
                     useSVG: true,
                 });
 
