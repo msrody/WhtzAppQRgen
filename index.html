@@ -67,7 +67,7 @@
         button {
             background-color: #4CAF50;
             color: rgb(0, 0, 0);
-            padding: 12px 20px;
+            padding: 1em 4em;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -103,7 +103,7 @@
             <br>
         </div>
         <div class="grid_item" style="margin-top:1em">
-            <button onclick="makeCode()" style="margin-top:1em">Click me</button>
+            <button onclick="makeCode()" style="margin-top:1em">Update</button>
         </div>
         <div class="grid_item">
             <a id="href">
@@ -131,6 +131,26 @@
                     qrcode.makeCode(wurl);
                 }
                 makeCode();
+/* formerly used to make update one input change.
+                                $("#wAnumber").
+                                    on("blur", function () {
+                                        makeCode();
+                                    }).
+                                    on("keydown", function (e) {
+                                        if (e.keyCode == 13) {
+                                            makeCode();
+                                        }
+                                    });
+                
+                                $("#wAmessage").
+                                    on("blur", function () {
+                                        makeCode();
+                                    }).
+                                    on("keydown", function (e) {
+                                        if (e.keyCode == 13) {
+                                            makeCode();
+                                        }
+                                    }); */
 
             </script>
         </div>
