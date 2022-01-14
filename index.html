@@ -64,6 +64,16 @@
             font-family: 'Barlow Condensed', sans-serif;
         }
 
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
         /* Hide HTML5 Up and Down arrows. */
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
@@ -82,17 +92,19 @@
         <div class="grid_item">
             <p style="text-align:center;">Include country code (ie. +62) digits only.<br />
                 WhatsApp validates number when message is sent.<br />
-            <hr>
+                <hr>
         </div>
         <div class="grid_item">
             <input id="wAnumber" type="number" value="62" />
             <br>
         </div>
-        <div class="grid_item" style="margin-top:1em">    
+        <div class="grid_item" style="margin-top:1em">
 
             <textarea id="wAmessage" rows="10">Input your WhatsApp message here.</textarea>
             <br>
-            <button id="wAupdate" type="submit" value="Update QR" style="margin-top:1em"   />
+        </div>
+        <div class="grid_item" style="margin-top:1em">
+            <input id="wAupdate" type="submit" value="Update QR" style="margin-top:1em" />
         </div>
         <div class="grid_item">
             <a id="href">
@@ -121,24 +133,24 @@
                 makeCode();
 
                 $("#wAupdate").
-                    on("blur", function () {
+ /*                   on("blur", function () {
                         makeCode();
-                    }).
+                    }). */
                     on("keydown", function (e) {
                         if (e.keyCode == 13) {
                             makeCode();
                         }
                     });
 /*
-                $("#wAmessage").
-                    on("blur", function () {
-                        makeCode();
-                    }).
-                    on("keydown", function (e) {
-                        if (e.keyCode == 13) {
-                            makeCode();
-                        }
-                    }); */
+                                                $("#wAmessage").
+                                                    on("blur", function () {
+                                                        makeCode();
+                                                    }).
+                                                    on("keydown", function (e) {
+                                                        if (e.keyCode == 13) {
+                                                            makeCode();
+                                                        }
+                                                    }); */
             </script>
         </div>
     </div>
