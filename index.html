@@ -104,6 +104,8 @@
             <br>
         </div>
         <div class="grid_item" style="margin-top:1em">
+            <button onclick="makeCode()" style="margin-top:1em; color:red;">Click me</button>
+
             <input id="wAupdate" type="submit" value="Update QR" style="margin-top:1em" />
         </div>
         <div class="grid_item">
@@ -132,6 +134,26 @@
                     qrcode.makeCode(wurl);
                 }
                 makeCode();
+
+                $("#wAnumber").
+                    on("blur", function () {
+                        makeCode();
+                    }).
+                    on("keydown", function (e) {
+                        if (e.keyCode == 13) {
+                            makeCode();
+                        }
+                    });
+
+                $("#wAmessage").
+                    on("blur", function () {
+                        makeCode();
+                    }).
+                    on("keydown", function (e) {
+                        if (e.keyCode == 13) {
+                            makeCode();
+                        }
+                    });
 
                 $("#wAupdate").
                     on("blur", function () {
