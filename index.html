@@ -109,6 +109,7 @@
                 function makeCode() {
                     var wnumber = document.getElementById("wAnumber");
                     var wmessage = document.getElementById("wAmessage");
+                    var wupdate = document.getElementById("wAupdate");
                     var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
                     var href = document.getElementById("href").setAttribute("href", wurl);
                     if (!wnumber.value) {
