@@ -121,6 +121,7 @@
                 function makeCode() {
                     var wnumber = document.getElementById("wAnumber");
                     var wmessage = document.getElementById("wAmessage");
+                    var wupdate = document.getElementById("wAupdate");
                     var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
                     var href = document.getElementById("href").setAttribute("href", wurl);
                     if (!wnumber.value) {
@@ -133,24 +134,24 @@
                 makeCode();
 
                 $("#wAupdate").
- /*                   on("blur", function () {
+                    on("blur", function () {
                         makeCode();
-                    }). */
+                    }).
                     on("keydown", function (e) {
                         if (e.keyCode == 13) {
                             makeCode();
                         }
                     });
-/*
-                                                $("#wAmessage").
-                                                    on("blur", function () {
-                                                        makeCode();
-                                                    }).
-                                                    on("keydown", function (e) {
-                                                        if (e.keyCode == 13) {
-                                                            makeCode();
-                                                        }
-                                                    }); */
+
+                $("#wAmessage").
+                    on("blur", function () {
+                        makeCode();
+                    }).
+                    on("keydown", function (e) {
+                        if (e.keyCode == 13) {
+                            makeCode();
+                        }
+                    });
             </script>
         </div>
     </div>
