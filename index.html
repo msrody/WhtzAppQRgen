@@ -29,7 +29,13 @@
             justify-self: stretch;
             text-align: center;
         }
-
+        .grid_item-2 {
+            grid-column-start: 4;
+            grid-column-end: 10;
+            align-items: center;
+            justify-self: stretch;
+            text-align: center;
+        }
 
 
         .flex-container {
@@ -102,10 +108,10 @@
         <div class="grid_item" style="margin-top:1em">
             <textarea id="wAmessage" rows="6">Input your WhatsApp message here.</textarea>
         </div>
-        <div class="grid_item" style="margin-top:.2em">
-            <button onclick="makeCode()" style="margin-top:1em">Update</button>
-        </div>
         <div class="grid_item">
+            <button onclick="makeCode()" style="margin-top:.5em">Update</button>
+        </div>
+        <div class="grid_item-2">
             <a id="href">
                 <div id="qrcode" class="grid_item" style="margin-top:1em; align-items:center"></div>
             </a>
