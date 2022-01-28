@@ -109,53 +109,54 @@
             <button onclick="makeCode()" style="margin-top:1em">Update</button>
         </div>
         <div class="grid_item">
-            <div class="flex-container"></div>><a id="href">
-                <div id="qrcode" class="grid_item" style="margin-top:1em; align-items:center"></div>
-            </a>
-            <script type="text/javascript">
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 25,
-                    height: 25,
-                    useSVG: true,
-                });
+            <div class="flex-container"><a id="href">
+                    <div id="qrcode" class="grid_item" style="margin-top:1em; align-items:center"></div>
+                </a>
+                <script type="text/javascript">
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width: 25,
+                        height: 25,
+                        useSVG: true,
+                    });
 
 
-                function makeCode() {
-                    var wnumber = document.getElementById("wAnumber");
-                    var wmessage = document.getElementById("wAmessage");
-                    var wupdate = document.getElementById("wAupdate");
-                    var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
-                    var href = document.getElementById("href").setAttribute("href", wurl);
-                    if (!wnumber.value) {
-                        alert("Input a number");
-                        wnumber.focus();
-                        return;
+                    function makeCode() {
+                        var wnumber = document.getElementById("wAnumber");
+                        var wmessage = document.getElementById("wAmessage");
+                        var wupdate = document.getElementById("wAupdate");
+                        var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
+                        var href = document.getElementById("href").setAttribute("href", wurl);
+                        if (!wnumber.value) {
+                            alert("Input a number");
+                            wnumber.focus();
+                            return;
+                        }
+                        qrcode.makeCode(wurl);
                     }
-                    qrcode.makeCode(wurl);
-                }
-                makeCode();
-/* formerly used to make update one input change.
-                                                $("#wAnumber").
-                                                    on("blur", function () {
-                                                        makeCode();
-                                                    }).
-                                                    on("keydown", function (e) {
-                                                        if (e.keyCode == 13) {
-                                                            makeCode();
-                                                        }
-                                                    });
-                                
-                                                $("#wAmessage").
-                                                    on("blur", function () {
-                                                        makeCode();
-                                                    }).
-                                                    on("keydown", function (e) {
-                                                        if (e.keyCode == 13) {
-                                                            makeCode();
-                                                        }
-                                                    }); */
+                    makeCode();
+                                        /* formerly used to make update one input change.
+$("#wAnumber").
+on("blur", function () {
+makeCode();
+}).
+on("keydown", function (e) {
+if (e.keyCode == 13) {
+makeCode();
+}
+});
+ 
+$("#wAmessage").
+on("blur", function () {
+makeCode();
+}).
+on("keydown", function (e) {
+if (e.keyCode == 13) {
+makeCode();
+}
+}); */
 
-            </script></div>
+                </script>
+            </div>
         </div>
     </div>
     </div>
