@@ -30,6 +30,8 @@
             text-align: center;
         }
 
+
+
         .flex-container {
             display: flex;
             flex: 1;
@@ -107,14 +109,14 @@
             <button onclick="makeCode()" style="margin-top:1em">Update</button>
         </div>
         <div class="grid_item">
-            <a id="href">
+            <div class="flex-container"></div>><a id="href">
                 <div id="qrcode" class="grid_item" style="margin-top:1em; align-items:center"></div>
             </a>
             <script type="text/javascript">
                 var qrcode = new QRCode(document.getElementById("qrcode"), {
                     width: 25,
                     height: 25,
-                    //useSVG: true,
+                    useSVG: true,
                 });
 
 
@@ -133,27 +135,27 @@
                 }
                 makeCode();
 /* formerly used to make update one input change.
-                                $("#wAnumber").
-                                    on("blur", function () {
-                                        makeCode();
-                                    }).
-                                    on("keydown", function (e) {
-                                        if (e.keyCode == 13) {
-                                            makeCode();
-                                        }
-                                    });
-                
-                                $("#wAmessage").
-                                    on("blur", function () {
-                                        makeCode();
-                                    }).
-                                    on("keydown", function (e) {
-                                        if (e.keyCode == 13) {
-                                            makeCode();
-                                        }
-                                    }); */
+                                                $("#wAnumber").
+                                                    on("blur", function () {
+                                                        makeCode();
+                                                    }).
+                                                    on("keydown", function (e) {
+                                                        if (e.keyCode == 13) {
+                                                            makeCode();
+                                                        }
+                                                    });
+                                
+                                                $("#wAmessage").
+                                                    on("blur", function () {
+                                                        makeCode();
+                                                    }).
+                                                    on("keydown", function (e) {
+                                                        if (e.keyCode == 13) {
+                                                            makeCode();
+                                                        }
+                                                    }); */
 
-            </script>
+            </script></div>
         </div>
     </div>
     </div>
