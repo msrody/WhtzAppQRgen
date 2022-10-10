@@ -1,164 +1,173 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>QRCode link generator for WhatsApp "click to chat" message.</title>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="qrcode.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap");
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 1.8em;
-            font-family: 'Barlow Condensed', sans-serif;
-        }
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.8em;
+        font-family: "Barlow Condensed", sans-serif;
+      }
 
-        .grid_container {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: auto;
-            align-items: center;
-            justify-items: center;
-        }
+      .grid_container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: auto;
+        align-items: center;
+        justify-items: center;
+      }
 
-        .grid_item {
-            grid-column-start: 3;
-            grid-column-end: 10;
-            align-items: center;
-            justify-self: stretch;
-            text-align: center;
-        }
+      .grid_item {
+        grid-column-start: 3;
+        grid-column-end: 10;
+        align-items: center;
+        justify-self: stretch;
+        text-align: center;
+      }
 
-        .flex-container {
-            display: flex;
-            flex: 1;
-            align-self: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: large;
-            width: 80%;
-        }
+      .flex-container {
+        display: flex;
+        flex: 1;
+        align-self: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: large;
+        width: 80%;
+      }
 
-        .flex-content {
-            display: flex;
-            flex: 1;
-            align-self: center;
-            flex-direction: column;
-            align-items: center;
-            font-size: large;
-            width: 5vw;
-        }
+      .flex-content {
+        display: flex;
+        flex: 1;
+        align-self: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: large;
+        width: 5vw;
+      }
 
-        textarea {
-            font-size: 1em;
-            width: 80%;
-            text-align: center;
-            font-family: 'Barlow Condensed', sans-serif;
-        }
+      textarea {
+        font-size: 1em;
+        width: 80%;
+        text-align: center;
+        font-family: "Barlow Condensed", sans-serif;
+      }
 
-        input {
-            font-size: 1em;
-            width: 80%;
-            text-align: left;
-            font-family: 'Barlow Condensed', sans-serif;
-        }
+      input {
+        font-size: 1em;
+        width: 80%;
+        text-align: left;
+        font-family: "Barlow Condensed", sans-serif;
+      }
 
-        button {
-            font-size: 1em;
-            background-color: #4CAF50;
-            color: rgb(0, 0, 0);
-            padding: 1em 4em;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+      button {
+        font-size: 1em;
+        background-color: #4caf50;
+        color: rgb(0, 0, 0);
+        padding: 1em 4em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-        /* Hide HTML5 Up and Down arrows. */
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+      /* Hide HTML5 Up and Down arrows. */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="grid_container">
-        <div class="grid_item">
-            <p style="text-align:center;">Include country code (ie. +62) with phone number, digits only.<br />
-                WhatsApp validates number when message is sent.<br />
-                <hr>
-        </div>
-        <div class="grid_item">
-            <input id="wAnumber" type="number" value="62" />
-            <br>
-        </div>
-        <div class="grid_item" style="margin-top:1em">
+      <div class="grid_item">
+        <p style="text-align: center">
+          Include country code (ie. +62) with phone number, digits only.<br />
+          WhatsApp validates number when message is sent.<br />
+        </p>
 
-            <textarea id="wAmessage" rows="4">Input your WhatsApp message here.</textarea>
-            <br>
-        </div>
-        <div class="grid_item" style="margin-top:1em">
-            <button onclick="makeCode()" style="margin-top:1em">Update</button>
-        </div>
-        <div class="grid_item" style="grid-column-start: 5; grid-column-end: 8;">
-            <a id="href">
-                <div id="qrcode" class="grid_item" style="margin-top:1em; align-items:center; "></div>
-            </a>
-            <script type="text/javascript">
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    width: 50,
-                    height: 50,
-                    useSVG: true,
-                });
-
-
-                function makeCode() {
-                    var wnumber = document.getElementById("wAnumber");
-                    var wmessage = document.getElementById("wAmessage");
-                    var wupdate = document.getElementById("wAupdate");
-                    var wurl = "https://wa.me/" + (wnumber.value) + "?text=" + encodeURI(wmessage.value);
-                    var href = document.getElementById("href").setAttribute("href", wurl);
-                    if (!wnumber.value) {
-                        alert("Input a number");
-                        wnumber.focus();
-                        return;
-                    }
-                    qrcode.makeCode(wurl);
-                }
-                makeCode();
-/* formerly used to make update one input change.
-                                $("#wAnumber").
-                                    on("blur", function () {
-                                        makeCode();
-                                    }).
-                                    on("keydown", function (e) {
-                                        if (e.keyCode == 13) {
-                                            makeCode();
-                                        }
-                                    });
-                
-                                $("#wAmessage").
-                                    on("blur", function () {
-                                        makeCode();
-                                    }).
-                                    on("keydown", function (e) {
-                                        if (e.keyCode == 13) {
-                                            makeCode();
-                                        }
-                                    }); */
-
-            </script>
-        </div>
+        <hr />
+      </div>
+      <div class="grid_item">
+        <input id="wAnumber" type="number" value="62" />
+        <br />
+      </div>
+      <div class="grid_item" style="margin-top: 1em">
+        <textarea id="wAmessage" rows="4">
+Input your WhatsApp message here.</textarea
+        >
+        <br />
+      </div>
+      <div class="grid_item" style="margin-top: 1em">
+        <button onclick="makeCode(); wANumFileDl()" style="margin-top: 1em">Update</button>
+      </div>
+      <div class="grid_item" style="grid-column-start: 5; grid-column-end: 8">
+        <a id="href">
+          <div
+            id="qrcode"
+            class="grid_item"
+            style="margin-top: 1em; align-items: center"
+          ></div>
+        </a>
+        <a id="svgl1" name="svglink" href="javascript:void(0)" download="filename"
+          >DOWNLOAD SVG</a
+        >
+      </div>
     </div>
-    </div>
-    </div>
-</body>
+  </body>
+    
+  <script>
+    function wANumFileDl() {
+      let wn = document.getElementById("wAnumber");
+      let fname = 'WAQRCode_' + wn.value + '.svg';
+      document.getElementById("svgl1").download = fname;
+        }
+  </script>
+  
+  <script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      width: 50,
+      height: 50,
+      useSVG: true,
+    });
 
-
+    function makeCode() {
+      var wnumber = document.getElementById("wAnumber");
+      var wmessage = document.getElementById("wAmessage");
+      var wurl =
+        "https://wa.me/" + wnumber.value + "?text=" + encodeURI(wmessage.value);
+      var href = document.getElementById("href").setAttribute("href", wurl);
+      if (!wnumber.value) {
+        alert("Input a number");
+        wnumber.focus();
+        return;
+      }
+      qrcode.makeCode(wurl);
+    }
+    makeCode();
+  </script>
+    
+  <script>
+    document.links.svglink.addEventListener("click", (e) => {
+      let svg = document.querySelector("svg").outerHTML;
+      let blob = new Blob(
+        [
+          svg.replace(
+            'xmlns:xlink="http://www.w3.org/1999/xlink"',
+            'version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
+          ),
+        ],
+        { type: "image/svg+xml" }
+      );
+      e.target.href = URL.createObjectURL(blob);
+    });
+  </script>
 </html>
