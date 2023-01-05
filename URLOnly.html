@@ -5,40 +5,85 @@
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="qrcode.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
-    }
-.flex-container {
-  display: flex;
-  flex: 1;
-  align-self: center;
-  flex-direction: column;
-  align-items: center;
-  font-size: large;
-  width: 80%;
-}
-textarea {
-    font-size: 20px;
-    width:80%;
-    align-items:center;
-}
-input {
-    font-size: 32px;
-    width:80%;
-    align-items:center;
-}
-/* Hide HTML5 Up and Down arrows. */
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
- 
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-</style>
+      @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap");
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.8em;
+        font-family: "Barlow Condensed", sans-serif;
+      }
+
+      .grid_container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: auto;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .grid_item {
+        grid-column-start: 3;
+        grid-column-end: 10;
+        align-items: center;
+        justify-self: stretch;
+        text-align: center;
+      }
+
+      .flex-container {
+        display: flex;
+        flex: 1;
+        align-self: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: large;
+        width: 80%;
+      }
+
+      .flex-content {
+        display: flex;
+        flex: 1;
+        align-self: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: large;
+        width: 5vw;
+      }
+
+      textarea {
+        font-size: 1em;
+        width: 80%;
+        text-align: center;
+        font-family: "Barlow Condensed", sans-serif;
+      }
+
+      input {
+        font-size: 1em;
+        width: 80%;
+        text-align: left;
+        font-family: "Barlow Condensed", sans-serif;
+      }
+
+      button {
+        font-size: 1em;
+        background-color: #4caf50;
+        color: rgb(0, 0, 0);
+        padding: 1em 4em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      /* Hide HTML5 Up and Down arrows. */
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
 </head>
 <body>
 
