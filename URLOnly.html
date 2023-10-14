@@ -1,149 +1,169 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>QRCode generator for WhatsApp links</title>
-<script type="text/javascript" src="jquery.min.js"></script>
-<script type="text/javascript" src="qrcode.js"></script>
-<style>
-      @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap");
+  <title>QRCode generator for WhatsApp links</title>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="qrcode.js"></script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap");
 
-      body {
-        font-family: "Open Sans", sans-serif;
-        font-size: 1.8em;
-        font-family: "Barlow Condensed", sans-serif;
-      }
+    body {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.8em;
+      font-family: "Barlow Condensed", sans-serif;
+    }
 
-      .grid_container {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: auto;
-        align-items: center;
-        justify-items: center;
-      }
-	
-      .grid_menu {
-        grid-column-start: 2;
-        grid-column-end: 4;
-        font-size: .5em;
-        text-align: left;
-        align-items: left;
-      }  
+    .grid_container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      align-items: center;
+      justify-items: center;
+    }
 
-      .grid_item {
-        grid-column-start: 3;
-        grid-column-end: 10;
-        align-items: center;
-        justify-self: stretch;
-        text-align: center;
-      }
+    .grid_menu {
+      grid-column-start: 2;
+      grid-column-end: 4;
+      font-size: .5em;
+      text-align: left;
+      align-items: left;
+    }
 
-      .flex-container {
-        display: flex;
-        flex: 1;
-        align-self: center;
-        flex-direction: column;
-        align-items: center;
-        font-size: large;
-        width: 80%;
-      }
+    .grid_item {
+      grid-column-start: 3;
+      grid-column-end: 10;
+      align-items: center;
+      justify-self: stretch;
+      text-align: center;
+    }
 
-      .flex-content {
-        display: flex;
-        flex: 1;
-        align-self: center;
-        flex-direction: column;
-        align-items: center;
-        font-size: large;
-        width: 5vw;
-      }
+    .flex-container {
+      display: flex;
+      flex: 1;
+      align-self: center;
+      flex-direction: column;
+      align-items: center;
+      font-size: large;
+      width: 80%;
+    }
 
-      textarea {
-        font-size: 1em;
-        width: 80%;
-        text-align: center;
-        font-family: "Barlow Condensed", sans-serif;
-      }
+    .flex-content {
+      display: flex;
+      flex: 1;
+      align-self: center;
+      flex-direction: column;
+      align-items: center;
+      font-size: large;
+      width: 5vw;
+    }
 
-      input {
-        font-size: 1em;
-        width: 80%;
-        text-align: left;
-        font-family: "Barlow Condensed", sans-serif;
-      }
+    textarea {
+      font-size: 1em;
+      width: 80%;
+      text-align: center;
+      font-family: "Barlow Condensed", sans-serif;
+    }
 
-      button {
-        font-size: 1em;
-        background-color: #4caf50;
-        color: rgb(0, 0, 0);
-        padding: 1em 4em;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
+    input {
+      font-size: 1em;
+      width: 80%;
+      text-align: left;
+      font-family: "Barlow Condensed", sans-serif;
+    }
 
-      /* Hide HTML5 Up and Down arrows. */
-      input[type="number"]::-webkit-outer-spin-button,
-      input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
+    button {
+      font-size: 1em;
+      background-color: #4caf50;
+      color: rgb(0, 0, 0);
+      padding: 1em 4em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-      input[type="number" placeholder="Replace this text with your text."] {
-        -moz-appearance: textfield;
-      }
-    </style>
+    /* Hide HTML5 Up and Down arrows. */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number" placeholder="Replace this text with your text."] {
+      -moz-appearance: textfield;
+    }
+  </style>
 </head>
+
 <body>
-	<div class="grid_container">
-      <div class="grid_menu">
-        <a href="https://waqrcode.netlify.app/">WAQR Page</a>
-        </div>
-        </div>
+  <div class="grid_container">
+    <div class="grid_menu">
+      <a href="https://waqrcode.netlify.app/">WAQR Page</a>
+    </div>
+  </div>
 
-<div class="flex-container">
-<p style="text-align:center;">Paste the url in the box and hit enter.</p>
-<hr>
+  <div class="flex-container">
+    <p style="text-align:center;">Paste the url in the box and hit enter.</p>
+    <hr>
 
-<textarea id="urlText" rows="10">
+    <textarea id="urlText" rows="10">
 
 </textarea>
-<br />
-<a id="href">
-<div id="qrcode" style="margin-top:5px; align-items:center"></div>
-	</a>
-	</div>
+    <br />
+    <a id="href">
+      <div id="qrcode" style="margin-top:5px; align-items:center"></div>
+    </a>
+    <a id="svgl1" name="svglink" href="javascript:void(0)" download="filename"
+          >DOWNLOAD SVG</a>
+  </div>
 
 
 
-<script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 200,
-	height : 200,
-    useSVG : true 
-});
+  <script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      width: 200,
+      height: 200,
+      useSVG: true
+    });
 
 
-function makeCode () { 
-    var urlVal = document.getElementById("urlText"); 
-    var wurl = encodeURI(urlVal.value);
-    var href = document.getElementById("href").setAttribute("href",wurl);
-  
-    qrcode.makeCode(wurl);
-}
-makeCode();
+    function makeCode() {
+      var urlVal = document.getElementById("urlText");
+      var wurl = encodeURI(urlVal.value);
+      var href = document.getElementById("href").setAttribute("href", wurl);
+
+      qrcode.makeCode(wurl);
+    }
+    makeCode();
 
 
-	
-$("#urlText").
-	on("blur", function () {
-		makeCode();
-	}).
-	on("keydown", function (e) {
-		if (e.keyCode == 13) {
-			makeCode();
-		}
-	});
 
-</script>
+    $("#urlText").
+      on("blur", function () {
+        makeCode();
+      }).
+      on("keydown", function (e) {
+        if (e.keyCode == 13) {
+          makeCode();
+        }
+      });
+
+  </script>
+    <script>
+      document.links.svglink.addEventListener("click", (e) => {
+        let svg = document.querySelector("svg").outerHTML;
+        let blob = new Blob(
+          [
+            svg.replace(
+              'xmlns:xlink="http://www.w3.org/1999/xlink"',
+              'version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
+            ),
+          ],
+          { type: "image/svg+xml" }
+        );
+        e.target.href = URL.createObjectURL(blob);
+      });
+    </script>
 </body>
+
 </html>
