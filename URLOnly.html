@@ -109,12 +109,14 @@
     <textarea id="urlText" rows="10">
 
 </textarea>
+<div class="grid_item" style="margin-top: 1em">
+  <button onclick="makeCode(); wANumFileDl()" style="margin-top: 1em">Update</button>
+</div>
     <br />
     <a id="href">
       <div id="qrcode" style="margin-top:5px; align-items:center"></div>
     </a>
-    <a id="svgl1" name="svglink" href="javascript:void(0)" download="filename"
-          >DOWNLOAD SVG</a>
+    <a id="svgl1" name="svglink" href="javascript:void(0)" download="filename">DOWNLOAD SVG</a>
   </div>
 
 
@@ -149,21 +151,21 @@
       });
 
   </script>
-    <script>
-      document.links.svglink.addEventListener("click", (e) => {
-        let svg = document.querySelector("svg").outerHTML;
-        let blob = new Blob(
-          [
-            svg.replace(
-              'xmlns:xlink="http://www.w3.org/1999/xlink"',
-              'version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
-            ),
-          ],
-          { type: "image/svg+xml" }
-        );
-        e.target.href = URL.createObjectURL(blob);
-      });
-    </script>
+  <script>
+    document.links.svglink.addEventListener("click", (e) => {
+      let svg = document.querySelector("svg").outerHTML;
+      let blob = new Blob(
+        [
+          svg.replace(
+            'xmlns:xlink="http://www.w3.org/1999/xlink"',
+            'version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"'
+          ),
+        ],
+        { type: "image/svg+xml" }
+      );
+      e.target.href = URL.createObjectURL(blob);
+    });
+  </script>
 </body>
 
 </html>
