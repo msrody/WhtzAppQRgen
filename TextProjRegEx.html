@@ -1,115 +1,120 @@
 <html>
-  <head>
-    <style>
-      textarea,
-      button,
-      p {
-        font-size: 20px;
-      }
-      #output {
-        border: 1px solid black;
-        padding: 10px;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="grid_menu">
-      <a href="https://waqrcode.netlify.app/">WAQRCode Page</a> 
-      <a href="https://waqrcode.netlify.app/urlonly">URL Only Page</a>  
 
-    </div>
-    <div id="container" style="text-align: center">
-      <textarea
-        id="input"
-        rows="4"
-        cols="50"
-        placeholder="Enter some text with digits"
-      ></textarea
-      ><br />
-      <input
-        type="checkbox"
-        id="replaceDigits"
-        name="replaceDigits"
-        value="ReplaceDigits"
-      />
-      <label for="replaceDigits"> Digits to Superscript </label>
-      <input
-        type="checkbox"
-        id="repFootnotes"
-        name="repFootnotes"
-        value="ReplaceFootnotes"
-      />
-      <label for="RepFootnotes"> Remove Text in Brackets</label><br /><br />
-      <button id="button" onclick="superscriptDigits()">
-        Superscript Digits
-      </button>
-      <p id="output" style="text-align: left"></p>
-    </div>
-    <script>
-      // A function that takes a string and returns a new string with digits replaced by unicode superscript digits
-      function superscriptDigits1(str) {
-        // A mapping of digits to their unicode superscript counterparts
-        const superscriptMap = {
-          0: "⁰",
-          1: "¹",
-          2: "²",
-          3: "³",
-          4: "⁴",
-          5: "⁵",
-          6: "⁶",
-          7: "⁷",
-          8: "⁸",
-          9: "⁹",
-        };
-        // A regex that matches any digit from 0 to 9
-        const digitRegex = /\d/g;
-        // A function that takes a matched digit and returns the corresponding superscript digit from the map
-        function replaceDigit(match) {
-          return superscriptMap[match];
-        }
+<head>
+  <style>
+    textarea,
+    button,
+    p {
+      font-size: 20px;
+    }
 
-        // Use the replace method with the regex and the function to create a new string with superscript digits
-        let newStr = str.replace(digitRegex, replaceDigit);
+    #output {
+      border: 1px solid black;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
 
-        // Return the new string
-        return newStr;
+<body>
+  <div class="grid_menu">
+    <a href="https://waqrcode.netlify.app/">WAQRCode Page</a>
+    <a href="https://waqrcode.netlify.app/urlonly">URL Only Page</a>
+
+  </div>
+  <div id="container" style="text-align: center">
+    <textarea id="input" rows="4" cols="50" placeholder="Enter some text with digits"></textarea><br />
+
+    <input type="checkbox" id="replaceDigits" name="replaceDigits" value="ReplaceDigits" />
+    <label for="replaceDigits"> Digits to Superscript </label>
+
+    <input type="checkbox" id="repFootnotes" name="repFootnotes" value="ReplaceFootnotes" /> 
+    <label for="RepFootnotes"> Remove Text in Brackets</label>
+
+    <input type="checkbox" id="repPattern" name="repPattern" value="RepPattern" /><br>
+    <label for="RepPattern"> Remove Text in Brackets</label>
+
+
+    <label for="repPatSearch">Replace Pattern Search - regex:</label>
+    <input type="text" id="repPatSearch" name="repPatSearch" />
+
+
+
+
+
+
+
+    <br /><br />
+    <button id="button" onclick="superscriptDigits()">
+      Superscript Digits
+    </button>
+    <p id="output" style="text-align: left"></p>
+  </div>
+  <script>
+    // A function that takes a string and returns a new string with digits replaced by unicode superscript digits
+    function superscriptDigits1(str) {
+      // A mapping of digits to their unicode superscript counterparts
+      const superscriptMap = {
+        0: "⁰",
+        1: "¹",
+        2: "²",
+        3: "³",
+        4: "⁴",
+        5: "⁵",
+        6: "⁶",
+        7: "⁷",
+        8: "⁸",
+        9: "⁹",
+      };
+      // A regex that matches any digit from 0 to 9
+      const digitRegex = /\d/g;
+      // A function that takes a matched digit and returns the corresponding superscript digit from the map
+      function replaceDigit(match) {
+        return superscriptMap[match];
       }
 
-      function removeTextInBrackets(str) {
-        // remove the foot note brackets
-        let newStr = str.replace(/\[\w\]/g, "");
+      // Use the replace method with the regex and the function to create a new string with superscript digits
+      let newStr = str.replace(digitRegex, replaceDigit);
 
-        // Return the new string
-        return newStr;
-      }
+      // Return the new string
+      return newStr;
+    }
 
-      function processSR(content) {
-        if (document.getElementById("replaceDigits").checked) {
-          content = superscriptDigits1(content);
-        }
-        if (document.getElementById("repFootnotes").checked){
-            content = removeTextInBrackets(content);
-        }
-        return(content)
-        
-      }
+    function removeTextInBrackets(str) {
+      // remove the foot note brackets
+      let newStr = str.replace(/\[\w\]/g, "");
 
-      // A function that gets the value of the textarea and displays it on the page below
-      function superscriptDigits() {
-        // Get the textarea element by its id
-        let input = document.getElementById("input");
-        // Get the value of the textarea element
-        let inputValue = input.value;
-        // Call the superscriptDigits function on the input value and store the result
-        let outputValue = processSR(inputValue);
-        // Get the output element by its id
-        let output = document.getElementById("output");
-        // Replace the new line characters (\n) with the <br> tag to create line breaks in the output
-        outputValue = outputValue.replace(/\n/g, "<br>");
-        // Set the inner HTML of the output element to the result
-        output.innerHTML = outputValue;
+      // Return the new string
+      return newStr;
+    }
+
+    function processSR(content) {
+      if (document.getElementById("replaceDigits").checked) {
+        content = superscriptDigits1(content);
       }
-    </script>
-  </body>
+      if (document.getElementById("repFootnotes").checked) {
+        content = removeTextInBrackets(content);
+      }
+      return (content)
+
+    }
+
+    // A function that gets the value of the textarea and displays it on the page below
+    function superscriptDigits() {
+      // Get the textarea element by its id
+      let input = document.getElementById("input");
+      // Get the value of the textarea element
+      let inputValue = input.value;
+      // Call the superscriptDigits function on the input value and store the result
+      let outputValue = processSR(inputValue);
+      // Get the output element by its id
+      let output = document.getElementById("output");
+      // Replace the new line characters (\n) with the <br> tag to create line breaks in the output
+      outputValue = outputValue.replace(/\n/g, "<br>");
+      // Set the inner HTML of the output element to the result
+      output.innerHTML = outputValue;
+    }
+  </script>
+</body>
+
 </html>
