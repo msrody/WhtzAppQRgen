@@ -35,12 +35,8 @@
     <label for="RepPattern"> RegEx Pattern Search & Replace</label><br>
 
 
-    <input type="text" id="repPatSearch" name="repPatSearch" placeholder="Pattern to Search - regex pattern:" /> 
+    <input type="text" id="repPatSearch" name="repPatSearch" placeholder="Pattern to Search - regex pattern:" />  
     <input type="text" id="repPatReplace" name="repPatReplace" placeholder="Replace With - regex replacement:"/>
-
-
-
-
 
 
     <br /><br />
@@ -87,6 +83,15 @@
       return newStr;
     }
 
+    function replacePattern(str) {
+      // Get the repPatSearch element by its id
+      let search = document.getElementById("repPatSearch");
+      let replace = document.getElementById("repPatReplace")
+      let newStr = str.replace(search.value,replace.value);
+      return(newStr)
+
+    }
+
     function processSR(content) {
       if (document.getElementById("replaceDigits").checked) {
         content = superscriptDigits1(content);
@@ -94,6 +99,8 @@
       if (document.getElementById("repFootnotes").checked) {
         content = removeTextInBrackets(content);
       }
+      if (document.getElementById("repPattern").checked)
+      content = replacePattern(content)
       return (content)
 
     }
