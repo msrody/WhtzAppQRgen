@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <style>
+      input,
+      button,
+      p {
+        font-size: 20px;
+      }
+      #output {
+        border: 1px solid black;
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container" style="text-align: center">
+      <p>
+        <textarea
+          id="input"
+          type="text"
+          rows="4"
+          cols="50"
+          placeholder="Enter some text with digits"
+        ></textarea>
+      </p>
+      <p>
+        <button id="button" onclick="superscriptDigits()">
+          Superscript Digits
+        </button>
+      </p>
+      <p id="output"></p>
+    </div>
+    <script>
+        // A function that takes a string and returns a new string with digits replaced by unicode superscript digits
+        function superscriptDigits1(str) {
+          // A mapping of digits to their unicode superscript counterparts
+          const superscriptMap = {
+            "0": "⁰",
+            "1": "¹",
+            "2": "²",
+            "3": "³",
+            "4": "⁴",
+            "5": "⁵",
+            "6": "⁶",
+            "7": "⁷",
+            "8": "⁸",
+            "9": "⁹"
+          };
+          // A new string to store the result
+          let newStr = "";
+          // Loop through each character of the input string
+          for (let char of str) {
+            // If the character is a digit, replace it with the corresponding superscript digit from the map
+            if (char >= "0" && char <= "9") {
+              newStr += superscriptMap[char];
+            }
+            // Otherwise, keep the character as it is
+            else {
+              newStr += char;
+            }
+          }
+          // Return the new string
+          return newStr;
+        }
+    
+        // A function that gets the value of the textarea and displays it on the page below
+        function superscriptDigits() {
+          // Get the textarea element by its id
+          let input = document.getElementById("input");
+          // Get the value of the textarea element
+          let inputValue = input.value;
+          // Call the superscriptDigits function on the input value and store the result
+          let outputValue = superscriptDigits1(inputValue);
+          // Get the output element by its id
+          let output = document.getElementById("output");
+          // Replace the new line characters (\n) with the <br> tag to create line breaks in the output
+          outputValue = outputValue.replace(/\n/g, "<br>");
+          // Set the inner HTML of the output element to the result
+          output.innerHTML = outputValue;
+        }
+      </script>
+  </body>
+</html>
